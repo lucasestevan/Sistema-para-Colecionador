@@ -22,7 +22,7 @@ Partial Class Pesquisar
     'Não o modifique usando o editor de códigos.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnPesquisarItem = New System.Windows.Forms.Button()
         Me.btnAlterarItem = New System.Windows.Forms.Button()
         Me.btnExcluirItem = New System.Windows.Forms.Button()
@@ -31,7 +31,6 @@ Partial Class Pesquisar
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtLocalArm = New System.Windows.Forms.TextBox()
-        Me.cmbTipo = New System.Windows.Forms.ComboBox()
         Me.txtTitulo = New System.Windows.Forms.TextBox()
         Me.lblValorTotal = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -39,6 +38,7 @@ Partial Class Pesquisar
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.txtIdItem = New System.Windows.Forms.TextBox()
+        Me.cmbTipoItem = New System.Windows.Forms.ComboBox()
         CType(Me.dgItens, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -92,14 +92,14 @@ Partial Class Pesquisar
         Me.dgItens.MultiSelect = False
         Me.dgItens.Name = "dgItens"
         Me.dgItens.ReadOnly = True
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.InactiveCaption
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgItens.RowHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.InactiveCaption
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgItens.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.dgItens.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
         Me.dgItens.Size = New System.Drawing.Size(597, 208)
         Me.dgItens.TabIndex = 96
@@ -138,16 +138,6 @@ Partial Class Pesquisar
         Me.txtLocalArm.Name = "txtLocalArm"
         Me.txtLocalArm.Size = New System.Drawing.Size(289, 20)
         Me.txtLocalArm.TabIndex = 102
-        '
-        'cmbTipo
-        '
-        Me.cmbTipo.BackColor = System.Drawing.Color.White
-        Me.cmbTipo.FormattingEnabled = True
-        Me.cmbTipo.Items.AddRange(New Object() {"Feminino", "Masculino", "Outros"})
-        Me.cmbTipo.Location = New System.Drawing.Point(126, 18)
-        Me.cmbTipo.Name = "cmbTipo"
-        Me.cmbTipo.Size = New System.Drawing.Size(236, 21)
-        Me.cmbTipo.TabIndex = 101
         '
         'txtTitulo
         '
@@ -220,13 +210,23 @@ Partial Class Pesquisar
         Me.txtIdItem.Name = "txtIdItem"
         Me.txtIdItem.Size = New System.Drawing.Size(69, 20)
         Me.txtIdItem.TabIndex = 107
-        Me.txtIdItem.Visible = False
+        '
+        'cmbTipoItem
+        '
+        Me.cmbTipoItem.BackColor = System.Drawing.Color.White
+        Me.cmbTipoItem.FormattingEnabled = True
+        Me.cmbTipoItem.Items.AddRange(New Object() {"Camisa", "Copo", "Bandeira"})
+        Me.cmbTipoItem.Location = New System.Drawing.Point(125, 18)
+        Me.cmbTipoItem.Name = "cmbTipoItem"
+        Me.cmbTipoItem.Size = New System.Drawing.Size(236, 21)
+        Me.cmbTipoItem.TabIndex = 109
         '
         'Pesquisar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(621, 399)
+        Me.Controls.Add(Me.cmbTipoItem)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.txtIdItem)
         Me.Controls.Add(Me.lblQtdTotal)
@@ -234,7 +234,6 @@ Partial Class Pesquisar
         Me.Controls.Add(Me.lblValorTotal)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.txtLocalArm)
-        Me.Controls.Add(Me.cmbTipo)
         Me.Controls.Add(Me.txtTitulo)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label2)
@@ -259,7 +258,6 @@ Partial Class Pesquisar
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents txtLocalArm As TextBox
-    Friend WithEvents cmbTipo As ComboBox
     Friend WithEvents txtTitulo As TextBox
     Friend WithEvents lblValorTotal As Label
     Friend WithEvents Label3 As Label
@@ -267,4 +265,5 @@ Partial Class Pesquisar
     Friend WithEvents Label5 As Label
     Friend WithEvents Label7 As Label
     Friend WithEvents txtIdItem As TextBox
+    Friend WithEvents cmbTipoItem As ComboBox
 End Class

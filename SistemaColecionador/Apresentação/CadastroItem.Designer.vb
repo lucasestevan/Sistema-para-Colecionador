@@ -30,7 +30,6 @@ Partial Class CadastroItem
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtTitulo = New System.Windows.Forms.TextBox()
         Me.cmbTipo = New System.Windows.Forms.ComboBox()
-        Me.txtValorApx = New System.Windows.Forms.TextBox()
         Me.dtpCadastro = New System.Windows.Forms.DateTimePicker()
         Me.txtDesc = New System.Windows.Forms.TextBox()
         Me.pbImagem = New System.Windows.Forms.PictureBox()
@@ -43,9 +42,14 @@ Partial Class CadastroItem
         Me.btnAlterarFoto = New System.Windows.Forms.Button()
         Me.txtIdItem = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.txtQuantidade = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
+        Me.txtTotal = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.btnAlterarItem = New System.Windows.Forms.Button()
+        Me.txtQuantidade = New System.Windows.Forms.NumericUpDown()
+        Me.txtValorApx = New System.Windows.Forms.MaskedTextBox()
         CType(Me.pbImagem, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtQuantidade, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -111,14 +115,6 @@ Partial Class CadastroItem
         Me.cmbTipo.Size = New System.Drawing.Size(236, 21)
         Me.cmbTipo.TabIndex = 31
         '
-        'txtValorApx
-        '
-        Me.txtValorApx.BackColor = System.Drawing.Color.White
-        Me.txtValorApx.Location = New System.Drawing.Point(123, 105)
-        Me.txtValorApx.Name = "txtValorApx"
-        Me.txtValorApx.Size = New System.Drawing.Size(129, 20)
-        Me.txtValorApx.TabIndex = 32
-        '
         'dtpCadastro
         '
         Me.dtpCadastro.Format = System.Windows.Forms.DateTimePickerFormat.Custom
@@ -180,7 +176,7 @@ Partial Class CadastroItem
         Me.btnSalvar.BackColor = System.Drawing.Color.LightGray
         Me.btnSalvar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSalvar.Location = New System.Drawing.Point(314, 372)
+        Me.btnSalvar.Location = New System.Drawing.Point(240, 372)
         Me.btnSalvar.Name = "btnSalvar"
         Me.btnSalvar.Size = New System.Drawing.Size(97, 30)
         Me.btnSalvar.TabIndex = 41
@@ -249,14 +245,6 @@ Partial Class CadastroItem
         Me.Label7.Text = "Id Item"
         Me.Label7.Visible = False
         '
-        'txtQuantidade
-        '
-        Me.txtQuantidade.BackColor = System.Drawing.Color.White
-        Me.txtQuantidade.Location = New System.Drawing.Point(123, 137)
-        Me.txtQuantidade.Name = "txtQuantidade"
-        Me.txtQuantidade.Size = New System.Drawing.Size(34, 20)
-        Me.txtQuantidade.TabIndex = 48
-        '
         'Label8
         '
         Me.Label8.AutoSize = True
@@ -266,12 +254,61 @@ Partial Class CadastroItem
         Me.Label8.TabIndex = 47
         Me.Label8.Text = "Quantidade"
         '
+        'txtTotal
+        '
+        Me.txtTotal.BackColor = System.Drawing.Color.White
+        Me.txtTotal.Location = New System.Drawing.Point(240, 136)
+        Me.txtTotal.Name = "txtTotal"
+        Me.txtTotal.Size = New System.Drawing.Size(44, 20)
+        Me.txtTotal.TabIndex = 49
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(206, 140)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(34, 13)
+        Me.Label9.TabIndex = 50
+        Me.Label9.Text = "Total:"
+        '
+        'btnAlterarItem
+        '
+        Me.btnAlterarItem.BackColor = System.Drawing.Color.LightGray
+        Me.btnAlterarItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btnAlterarItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAlterarItem.Location = New System.Drawing.Point(386, 372)
+        Me.btnAlterarItem.Name = "btnAlterarItem"
+        Me.btnAlterarItem.Size = New System.Drawing.Size(97, 30)
+        Me.btnAlterarItem.TabIndex = 95
+        Me.btnAlterarItem.Text = "Alterar"
+        Me.btnAlterarItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnAlterarItem.UseVisualStyleBackColor = False
+        '
+        'txtQuantidade
+        '
+        Me.txtQuantidade.Location = New System.Drawing.Point(123, 137)
+        Me.txtQuantidade.Name = "txtQuantidade"
+        Me.txtQuantidade.Size = New System.Drawing.Size(47, 20)
+        Me.txtQuantidade.TabIndex = 96
+        '
+        'txtValorApx
+        '
+        Me.txtValorApx.Location = New System.Drawing.Point(122, 109)
+        Me.txtValorApx.Mask = "000,00"
+        Me.txtValorApx.Name = "txtValorApx"
+        Me.txtValorApx.Size = New System.Drawing.Size(43, 20)
+        Me.txtValorApx.TabIndex = 97
+        '
         'CadastroItem
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(758, 446)
+        Me.Controls.Add(Me.txtValorApx)
         Me.Controls.Add(Me.txtQuantidade)
+        Me.Controls.Add(Me.btnAlterarItem)
+        Me.Controls.Add(Me.Label9)
+        Me.Controls.Add(Me.txtTotal)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.txtIdItem)
@@ -285,7 +322,6 @@ Partial Class CadastroItem
         Me.Controls.Add(Me.pbImagem)
         Me.Controls.Add(Me.txtDesc)
         Me.Controls.Add(Me.dtpCadastro)
-        Me.Controls.Add(Me.txtValorApx)
         Me.Controls.Add(Me.cmbTipo)
         Me.Controls.Add(Me.txtTitulo)
         Me.Controls.Add(Me.Label5)
@@ -296,6 +332,7 @@ Partial Class CadastroItem
         Me.Name = "CadastroItem"
         Me.Text = "CadastroItem"
         CType(Me.pbImagem, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtQuantidade, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -308,7 +345,6 @@ Partial Class CadastroItem
     Friend WithEvents Label5 As Label
     Friend WithEvents txtTitulo As TextBox
     Friend WithEvents cmbTipo As ComboBox
-    Friend WithEvents txtValorApx As TextBox
     Friend WithEvents dtpCadastro As DateTimePicker
     Friend WithEvents txtDesc As TextBox
     Friend WithEvents pbImagem As PictureBox
@@ -321,6 +357,10 @@ Partial Class CadastroItem
     Friend WithEvents btnAlterarFoto As Button
     Friend WithEvents txtIdItem As TextBox
     Friend WithEvents Label7 As Label
-    Friend WithEvents txtQuantidade As TextBox
     Friend WithEvents Label8 As Label
+    Friend WithEvents txtTotal As TextBox
+    Friend WithEvents Label9 As Label
+    Friend WithEvents btnAlterarItem As Button
+    Friend WithEvents txtQuantidade As NumericUpDown
+    Friend WithEvents txtValorApx As MaskedTextBox
 End Class

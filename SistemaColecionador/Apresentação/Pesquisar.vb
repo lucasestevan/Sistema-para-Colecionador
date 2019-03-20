@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 
-Public Class Pesquisar
+Public Class btnCarregarfoto
     Private Sub btnPesquisarItem_Click(sender As Object, e As EventArgs) Handles btnPesquisarItem.Click
         Listar()
     End Sub
@@ -112,8 +112,8 @@ Public Class Pesquisar
         CadastroItem.rbOriginal.Enabled = True
         CadastroItem.btnSalvar.Enabled = False
         CadastroItem.btnSalvarFoto.Enabled = True
-        CadastroItem.btnAlterarFoto.Enabled = True
-        CadastroItem.btnAlterarFoto.Enabled = True
+        CadastroItem.btnCarregarFoto.Enabled = True
+        CadastroItem.btnCarregarFoto.Enabled = True
         CadastroItem.btnNovo.Enabled = False
         CadastroItem.btnAlterarItem.Enabled = True
     End Sub

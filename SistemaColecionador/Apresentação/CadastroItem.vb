@@ -1,4 +1,6 @@
-﻿Imports System.Data.SqlClient
+﻿Imports System.Data.OleDb
+Imports System.Data.SqlClient
+Imports System.IO
 
 Public Class CadastroItem
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles txtTitulo.TextChanged
@@ -27,7 +29,7 @@ Public Class CadastroItem
         rbOriginal.Enabled = False
         btnSalvar.Enabled = False
         btnSalvarFoto.Enabled = False
-        btnAlterarFoto.Enabled = False
+        btnCarregarFoto.Enabled = False
         btnAlterarItem.Enabled = False
     End Sub
 
@@ -45,6 +47,7 @@ Public Class CadastroItem
         txtLocalArm.Text = ""
         txtTotal.Text = ""
         rbOriginal.Checked = False
+
     End Sub
 
     'habilitar campos
@@ -59,7 +62,7 @@ Public Class CadastroItem
         rbOriginal.Enabled = True
         btnSalvar.Enabled = True
         btnSalvarFoto.Enabled = True
-        btnAlterarFoto.Enabled = True
+        btnCarregarFoto.Enabled = True
     End Sub
 
     Private Sub btnSalvarFoto_Click(sender As Object, e As EventArgs)
@@ -68,6 +71,8 @@ Public Class CadastroItem
 
     Private Sub btnSalvar_Click(sender As Object, e As EventArgs) Handles btnSalvar.Click
         Dim cmd As SqlCommand
+
+
         'SE OS CAMPOS NÃO ESTIVEREM VAZIO FACA
         If cmbTipo.Text <> "" And
             txtTitulo.Text <> "" And
@@ -76,7 +81,7 @@ Public Class CadastroItem
 
             Try
                 abrir()
-                cmd = New SqlCommand("sp_salvarItemm", con)
+                cmd = New SqlCommand("sp_salvarItem", con)
                 cmd.CommandType = CommandType.StoredProcedure
                 cmd.Parameters.AddWithValue("@tipoItem", cmbTipo.Text)
                 cmd.Parameters.AddWithValue("@Titulo", txtTitulo.Text)
@@ -86,17 +91,22 @@ Public Class CadastroItem
                 cmd.Parameters.AddWithValue("@descricao", txtDesc.Text)
                 cmd.Parameters.AddWithValue("@original", rbOriginal.Checked = "1")
                 cmd.Parameters.AddWithValue("@data_cadastro", dtpCadastro.Text)
+                Using ms As New IO.MemoryStream
+                    ImageAUsar.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg)
+                    Dim byteArray = ms.ToArray
+                    cmd.Parameters.AddWithValue("@imagem", byteArray)
 
-                cmd.Parameters.Add("@mensagem", SqlDbType.VarChar, 100).Direction = 2
-                cmd.ExecuteNonQuery()
+                    cmd.Parameters.Add("@mensagem", SqlDbType.VarChar, 100).Direction = 2
 
-                Dim msg As String = cmd.Parameters("@mensagem").Value.ToString
-                MessageBox.Show(msg, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
+                    cmd.ExecuteNonQuery()
 
-                LimparCampos()
-                desabilitarCampos()
-                btnSalvar.Enabled = False
+                    Dim msg As String = cmd.Parameters("@mensagem").Value.ToString
+                    MessageBox.Show(msg, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
 
+                    LimparCampos()
+                    desabilitarCampos()
+                    btnSalvar.Enabled = False
+                End Using
             Catch ex As Exception
                 MessageBox.Show("Erro ao Salvar os dados" + ex.Message)
                 fechar()
@@ -116,7 +126,7 @@ Public Class CadastroItem
 
         Try
             abrir()
-            cmd = New SqlCommand("sp_editarItemm", con)
+            cmd = New SqlCommand("sp_editarItem", con)
             cmd.CommandType = CommandType.StoredProcedure
             cmd.Parameters.AddWithValue("@id_item", txtIdItem.Text)
             cmd.Parameters.AddWithValue("@tipoItem", cmbTipo.Text)
@@ -126,15 +136,20 @@ Public Class CadastroItem
             cmd.Parameters.AddWithValue("@localArmazenado", txtLocalArm.Text)
             cmd.Parameters.AddWithValue("@descricao", txtDesc.Text)
             cmd.Parameters.AddWithValue("@original", rbOriginal.Text)
+            Using ms As New IO.MemoryStream
+                ImageAUsar.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg)
+                Dim byteArray = ms.ToArray
+                cmd.Parameters.AddWithValue("@imagem", byteArray)
 
-            cmd.Parameters.Add("@mensagem", SqlDbType.VarChar, 100).Direction = 2
-            cmd.ExecuteNonQuery()
+                cmd.Parameters.Add("@mensagem", SqlDbType.VarChar, 100).Direction = 2
 
-            Dim msg As String = cmd.Parameters("@mensagem").Value.ToString
-            MessageBox.Show(msg, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
+                cmd.ExecuteNonQuery()
 
-            Me.Close()
+                Dim msg As String = cmd.Parameters("@mensagem").Value.ToString
+                MessageBox.Show(msg, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
 
+                Me.Close()
+            End Using
         Catch ex As Exception
             MessageBox.Show("Erro ao alterar os dados" + ex.Message)
             fechar()
@@ -142,6 +157,32 @@ Public Class CadastroItem
     End Sub
 
     Private Sub txtQuantidade_ValueChanged(sender As Object, e As EventArgs) Handles txtQuantidade.ValueChanged
+
+    End Sub
+
+    Dim ImageAUsar As Image
+
+    'CAREEGAR IMAGEM
+    Private Sub CarregarImagem()
+        'ABRIR CAIXA DE DIALOGO 
+
+        Using OFD As New OpenFileDialog With {.Filter = "image file(*.jpg; *.bmp; *.gif; *.png) |*.jpg; *.bmp; *.gif; *.png"}
+
+            If OFD.ShowDialog = DialogResult.OK Then
+                ImageAUsar = Image.FromFile(OFD.FileName)
+                picImagem.Image = ImageAUsar
+
+            End If
+
+        End Using
+
+    End Sub
+
+    Private Sub btnCarregarFoto_Click(sender As Object, e As EventArgs) Handles btnCarregarFoto.Click
+        CarregarImagem()
+    End Sub
+
+    Private Sub btnSalvarFoto_Click_1(sender As Object, e As EventArgs) Handles btnSalvarFoto.Click
 
     End Sub
 End Class

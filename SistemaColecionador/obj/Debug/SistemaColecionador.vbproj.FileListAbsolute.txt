@@ -19,10 +19,10 @@ C:\Users\user\Desktop\SistemaColecionador\SistemaColecionador\bin\Debug\SistemaC
 C:\Users\user\Desktop\SistemaColecionador\SistemaColecionador\obj\Debug\SistemaColecionador.vbprojAssemblyReference.cache
 C:\Users\user\Desktop\SistemaColecionador\SistemaColecionador\obj\Debug\SistemaColecionador.CadastroItem.resources
 C:\Users\user\Desktop\SistemaColecionador\SistemaColecionador\obj\Debug\SistemaColecionador.Menu.resources
-C:\Users\user\Desktop\SistemaColecionador\SistemaColecionador\obj\Debug\SistemaColecionador.Pesquisar.resources
 C:\Users\user\Desktop\SistemaColecionador\SistemaColecionador\obj\Debug\SistemaColecionador.Resources.resources
 C:\Users\user\Desktop\SistemaColecionador\SistemaColecionador\obj\Debug\SistemaColecionador.vbproj.GenerateResource.cache
 C:\Users\user\Desktop\SistemaColecionador\SistemaColecionador\obj\Debug\SistemaColecionador.vbproj.CoreCompileInputs.cache
 C:\Users\user\Desktop\SistemaColecionador\SistemaColecionador\obj\Debug\SistemaColecionador.exe
 C:\Users\user\Desktop\SistemaColecionador\SistemaColecionador\obj\Debug\SistemaColecionador.xml
 C:\Users\user\Desktop\SistemaColecionador\SistemaColecionador\obj\Debug\SistemaColecionador.pdb
+C:\Users\user\Desktop\SistemaColecionador\SistemaColecionador\obj\Debug\SistemaColecionador.btnCarregarfoto.resources

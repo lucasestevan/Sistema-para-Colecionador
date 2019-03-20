@@ -4,6 +4,6 @@
     End Sub
 
     Private Sub btnPesquisar_Click(sender As Object, e As EventArgs) Handles btnPesquisar.Click
-        Pesquisar.Show()
+        btnCarregarfoto.Show()
     End Sub
 End Class

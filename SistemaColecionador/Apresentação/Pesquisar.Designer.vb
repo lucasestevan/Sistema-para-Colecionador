@@ -22,7 +22,7 @@ Partial Class btnCarregarfoto
     'Não o modifique usando o editor de códigos.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnPesquisarItem = New System.Windows.Forms.Button()
         Me.btnAlterarItem = New System.Windows.Forms.Button()
         Me.btnExcluirItem = New System.Windows.Forms.Button()
@@ -39,6 +39,7 @@ Partial Class btnCarregarfoto
         Me.Label7 = New System.Windows.Forms.Label()
         Me.txtIdItem = New System.Windows.Forms.TextBox()
         Me.cmbTipoItem = New System.Windows.Forms.ComboBox()
+        Me.btnVisualizar = New System.Windows.Forms.Button()
         CType(Me.dgItens, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -92,16 +93,16 @@ Partial Class btnCarregarfoto
         Me.dgItens.MultiSelect = False
         Me.dgItens.Name = "dgItens"
         Me.dgItens.ReadOnly = True
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.InactiveCaption
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgItens.RowHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.InactiveCaption
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgItens.RowHeadersDefaultCellStyle = DataGridViewCellStyle8
         Me.dgItens.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
-        Me.dgItens.Size = New System.Drawing.Size(597, 208)
+        Me.dgItens.Size = New System.Drawing.Size(483, 208)
         Me.dgItens.TabIndex = 96
         '
         'Label6
@@ -152,7 +153,7 @@ Partial Class btnCarregarfoto
         Me.lblValorTotal.AutoSize = True
         Me.lblValorTotal.BackColor = System.Drawing.Color.Transparent
         Me.lblValorTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblValorTotal.Location = New System.Drawing.Point(573, 377)
+        Me.lblValorTotal.Location = New System.Drawing.Point(456, 376)
         Me.lblValorTotal.Name = "lblValorTotal"
         Me.lblValorTotal.Size = New System.Drawing.Size(11, 13)
         Me.lblValorTotal.TabIndex = 104
@@ -163,7 +164,7 @@ Partial Class btnCarregarfoto
         Me.Label3.AutoSize = True
         Me.Label3.BackColor = System.Drawing.Color.Transparent
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(503, 377)
+        Me.Label3.Location = New System.Drawing.Point(391, 377)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(69, 13)
         Me.Label3.TabIndex = 103
@@ -210,6 +211,7 @@ Partial Class btnCarregarfoto
         Me.txtIdItem.Name = "txtIdItem"
         Me.txtIdItem.Size = New System.Drawing.Size(69, 20)
         Me.txtIdItem.TabIndex = 107
+        Me.txtIdItem.Visible = False
         '
         'cmbTipoItem
         '
@@ -221,11 +223,25 @@ Partial Class btnCarregarfoto
         Me.cmbTipoItem.Size = New System.Drawing.Size(236, 21)
         Me.cmbTipoItem.TabIndex = 109
         '
+        'btnVisualizar
+        '
+        Me.btnVisualizar.BackColor = System.Drawing.Color.LightGray
+        Me.btnVisualizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btnVisualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnVisualizar.Location = New System.Drawing.Point(512, 162)
+        Me.btnVisualizar.Name = "btnVisualizar"
+        Me.btnVisualizar.Size = New System.Drawing.Size(97, 37)
+        Me.btnVisualizar.TabIndex = 110
+        Me.btnVisualizar.Text = "Visualizar"
+        Me.btnVisualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnVisualizar.UseVisualStyleBackColor = False
+        '
         'btnCarregarfoto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(621, 399)
+        Me.Controls.Add(Me.btnVisualizar)
         Me.Controls.Add(Me.cmbTipoItem)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.txtIdItem)
@@ -242,8 +258,10 @@ Partial Class btnCarregarfoto
         Me.Controls.Add(Me.btnPesquisarItem)
         Me.Controls.Add(Me.btnAlterarItem)
         Me.Controls.Add(Me.btnExcluirItem)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.MaximizeBox = False
         Me.Name = "btnCarregarfoto"
-        Me.Text = "Carregar foto"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         CType(Me.dgItens, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -266,4 +284,5 @@ Partial Class btnCarregarfoto
     Friend WithEvents Label7 As Label
     Friend WithEvents txtIdItem As TextBox
     Friend WithEvents cmbTipoItem As ComboBox
+    Friend WithEvents btnVisualizar As Button
 End Class

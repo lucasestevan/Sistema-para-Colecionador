@@ -108,6 +108,12 @@
     <Compile Include="Apresentação\Pesquisar.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Apresentação\VisualizarItem.Designer.vb">
+      <DependentUpon>VisualizarItem.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\VisualizarItem.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Apresentação\CadastroItem.resx">
@@ -124,6 +130,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\VisualizarItem.resx">
+      <DependentUpon>VisualizarItem.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

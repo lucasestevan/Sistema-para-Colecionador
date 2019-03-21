@@ -26,3 +26,4 @@ C:\Users\user\Desktop\SistemaColecionador\SistemaColecionador\obj\Debug\SistemaC
 C:\Users\user\Desktop\SistemaColecionador\SistemaColecionador\obj\Debug\SistemaColecionador.xml
 C:\Users\user\Desktop\SistemaColecionador\SistemaColecionador\obj\Debug\SistemaColecionador.pdb
 C:\Users\user\Desktop\SistemaColecionador\SistemaColecionador\obj\Debug\SistemaColecionador.btnCarregarfoto.resources
+C:\Users\user\Desktop\SistemaColecionador\SistemaColecionador\obj\Debug\SistemaColecionador.VisualizarItem.resources

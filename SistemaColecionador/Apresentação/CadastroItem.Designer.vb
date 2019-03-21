@@ -38,7 +38,6 @@ Partial Class CadastroItem
         Me.txtLocalArm = New System.Windows.Forms.TextBox()
         Me.btnSalvar = New System.Windows.Forms.Button()
         Me.btnNovo = New System.Windows.Forms.Button()
-        Me.btnSalvarFoto = New System.Windows.Forms.Button()
         Me.btnCarregarFoto = New System.Windows.Forms.Button()
         Me.txtIdItem = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -103,7 +102,7 @@ Partial Class CadastroItem
         Me.txtTitulo.Location = New System.Drawing.Point(123, 70)
         Me.txtTitulo.Name = "txtTitulo"
         Me.txtTitulo.Size = New System.Drawing.Size(288, 20)
-        Me.txtTitulo.TabIndex = 6
+        Me.txtTitulo.TabIndex = 2
         '
         'cmbTipo
         '
@@ -113,7 +112,7 @@ Partial Class CadastroItem
         Me.cmbTipo.Location = New System.Drawing.Point(123, 34)
         Me.cmbTipo.Name = "cmbTipo"
         Me.cmbTipo.Size = New System.Drawing.Size(236, 21)
-        Me.cmbTipo.TabIndex = 31
+        Me.cmbTipo.TabIndex = 1
         '
         'dtpCadastro
         '
@@ -121,7 +120,7 @@ Partial Class CadastroItem
         Me.dtpCadastro.Location = New System.Drawing.Point(123, 166)
         Me.dtpCadastro.Name = "dtpCadastro"
         Me.dtpCadastro.Size = New System.Drawing.Size(98, 20)
-        Me.dtpCadastro.TabIndex = 33
+        Me.dtpCadastro.TabIndex = 5
         '
         'txtDesc
         '
@@ -130,7 +129,7 @@ Partial Class CadastroItem
         Me.txtDesc.Multiline = True
         Me.txtDesc.Name = "txtDesc"
         Me.txtDesc.Size = New System.Drawing.Size(289, 77)
-        Me.txtDesc.TabIndex = 34
+        Me.txtDesc.TabIndex = 7
         '
         'picImagem
         '
@@ -150,7 +149,7 @@ Partial Class CadastroItem
         Me.rbOriginal.Location = New System.Drawing.Point(123, 316)
         Me.rbOriginal.Name = "rbOriginal"
         Me.rbOriginal.Size = New System.Drawing.Size(74, 17)
-        Me.rbOriginal.TabIndex = 38
+        Me.rbOriginal.TabIndex = 8
         Me.rbOriginal.TabStop = True
         Me.rbOriginal.Text = "É original?"
         Me.rbOriginal.UseVisualStyleBackColor = True
@@ -170,7 +169,7 @@ Partial Class CadastroItem
         Me.txtLocalArm.Location = New System.Drawing.Point(122, 198)
         Me.txtLocalArm.Name = "txtLocalArm"
         Me.txtLocalArm.Size = New System.Drawing.Size(289, 20)
-        Me.txtLocalArm.TabIndex = 40
+        Me.txtLocalArm.TabIndex = 6
         '
         'btnSalvar
         '
@@ -180,7 +179,7 @@ Partial Class CadastroItem
         Me.btnSalvar.Location = New System.Drawing.Point(230, 372)
         Me.btnSalvar.Name = "btnSalvar"
         Me.btnSalvar.Size = New System.Drawing.Size(97, 30)
-        Me.btnSalvar.TabIndex = 41
+        Me.btnSalvar.TabIndex = 10
         Me.btnSalvar.Text = "Salvar"
         Me.btnSalvar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnSalvar.UseVisualStyleBackColor = False
@@ -199,28 +198,15 @@ Partial Class CadastroItem
         Me.btnNovo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnNovo.UseVisualStyleBackColor = False
         '
-        'btnSalvarFoto
-        '
-        Me.btnSalvarFoto.BackColor = System.Drawing.Color.LightGray
-        Me.btnSalvarFoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.btnSalvarFoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSalvarFoto.Location = New System.Drawing.Point(466, 276)
-        Me.btnSalvarFoto.Name = "btnSalvarFoto"
-        Me.btnSalvarFoto.Size = New System.Drawing.Size(97, 30)
-        Me.btnSalvarFoto.TabIndex = 43
-        Me.btnSalvarFoto.Text = "Salvar Foto"
-        Me.btnSalvarFoto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnSalvarFoto.UseVisualStyleBackColor = False
-        '
         'btnCarregarFoto
         '
         Me.btnCarregarFoto.BackColor = System.Drawing.Color.LightGray
         Me.btnCarregarFoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnCarregarFoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnCarregarFoto.Location = New System.Drawing.Point(630, 279)
+        Me.btnCarregarFoto.Location = New System.Drawing.Point(544, 275)
         Me.btnCarregarFoto.Name = "btnCarregarFoto"
         Me.btnCarregarFoto.Size = New System.Drawing.Size(97, 30)
-        Me.btnCarregarFoto.TabIndex = 44
+        Me.btnCarregarFoto.TabIndex = 9
         Me.btnCarregarFoto.Text = "Carregar foto"
         Me.btnCarregarFoto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnCarregarFoto.UseVisualStyleBackColor = False
@@ -290,7 +276,7 @@ Partial Class CadastroItem
         Me.txtQuantidade.Location = New System.Drawing.Point(123, 137)
         Me.txtQuantidade.Name = "txtQuantidade"
         Me.txtQuantidade.Size = New System.Drawing.Size(47, 20)
-        Me.txtQuantidade.TabIndex = 96
+        Me.txtQuantidade.TabIndex = 4
         '
         'txtValorApx
         '
@@ -298,7 +284,7 @@ Partial Class CadastroItem
         Me.txtValorApx.Mask = "000,00"
         Me.txtValorApx.Name = "txtValorApx"
         Me.txtValorApx.Size = New System.Drawing.Size(43, 20)
-        Me.txtValorApx.TabIndex = 97
+        Me.txtValorApx.TabIndex = 3
         '
         'CadastroItem
         '
@@ -314,7 +300,6 @@ Partial Class CadastroItem
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.txtIdItem)
         Me.Controls.Add(Me.btnCarregarFoto)
-        Me.Controls.Add(Me.btnSalvarFoto)
         Me.Controls.Add(Me.btnNovo)
         Me.Controls.Add(Me.btnSalvar)
         Me.Controls.Add(Me.txtLocalArm)
@@ -330,8 +315,10 @@ Partial Class CadastroItem
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.MaximizeBox = False
         Me.Name = "CadastroItem"
-        Me.Text = "CadastroItem"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         CType(Me.picImagem, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtQuantidade, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -354,7 +341,6 @@ Partial Class CadastroItem
     Friend WithEvents txtLocalArm As TextBox
     Friend WithEvents btnSalvar As Button
     Friend WithEvents btnNovo As Button
-    Friend WithEvents btnSalvarFoto As Button
     Friend WithEvents btnCarregarFoto As Button
     Friend WithEvents txtIdItem As TextBox
     Friend WithEvents Label7 As Label

@@ -28,7 +28,7 @@ Public Class CadastroItem
         txtDesc.Enabled = False
         rbOriginal.Enabled = False
         btnSalvar.Enabled = False
-        btnSalvarFoto.Enabled = False
+
         btnCarregarFoto.Enabled = False
         btnAlterarItem.Enabled = False
     End Sub
@@ -47,6 +47,7 @@ Public Class CadastroItem
         txtLocalArm.Text = ""
         txtTotal.Text = ""
         rbOriginal.Checked = False
+        picImagem.Image = Nothing
 
     End Sub
 
@@ -61,7 +62,7 @@ Public Class CadastroItem
         txtQuantidade.Enabled = True
         rbOriginal.Enabled = True
         btnSalvar.Enabled = True
-        btnSalvarFoto.Enabled = True
+
         btnCarregarFoto.Enabled = True
     End Sub
 
@@ -118,6 +119,7 @@ Public Class CadastroItem
 
     Private Sub txtTotal_TextChanged(sender As Object, e As EventArgs) Handles txtTotal.TextChanged
 
+
     End Sub
 
     'BOTAO ALTERAR item
@@ -126,7 +128,7 @@ Public Class CadastroItem
 
         Try
             abrir()
-            cmd = New SqlCommand("sp_editarItem", con)
+            cmd = New SqlCommand("sp_editarItemm", con)
             cmd.CommandType = CommandType.StoredProcedure
             cmd.Parameters.AddWithValue("@id_item", txtIdItem.Text)
             cmd.Parameters.AddWithValue("@tipoItem", cmbTipo.Text)
@@ -182,7 +184,7 @@ Public Class CadastroItem
         CarregarImagem()
     End Sub
 
-    Private Sub btnSalvarFoto_Click_1(sender As Object, e As EventArgs) Handles btnSalvarFoto.Click
+    Private Sub btnSalvarFoto_Click_1(sender As Object, e As EventArgs)
 
     End Sub
 End Class

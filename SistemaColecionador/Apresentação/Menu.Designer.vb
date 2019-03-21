@@ -63,8 +63,10 @@ Partial Class Menu
         Me.ClientSize = New System.Drawing.Size(476, 292)
         Me.Controls.Add(Me.btnPesquisar)
         Me.Controls.Add(Me.btnCadastro)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.MaximizeBox = False
         Me.Name = "Menu"
-        Me.Text = "Menu"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.ResumeLayout(False)
 
     End Sub

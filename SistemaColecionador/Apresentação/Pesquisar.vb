@@ -1,8 +1,10 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class btnCarregarfoto
+
     Private Sub btnPesquisarItem_Click(sender As Object, e As EventArgs) Handles btnPesquisarItem.Click
         Listar()
+
     End Sub
 
     'METODO LISTAR
@@ -16,7 +18,7 @@ Public Class btnCarregarfoto
             'PREENCHER A TABELA
             da.Fill(dt)
             dgItens.DataSource = dt
-
+            totalizar()
             ContarLinhas()
             FormatarDgPaciente()
         Catch ex As Exception
@@ -35,7 +37,7 @@ Public Class btnCarregarfoto
         dgItens.Columns(0).Visible = False
         dgItens.Columns(1).HeaderText = "Tipo"
         dgItens.Columns(2).HeaderText = "Titulo"
-        dgItens.Columns(3).HeaderText = "Valor"
+        dgItens.Columns(3).HeaderText = "Valor aprox"
         dgItens.Columns(4).HeaderText = "Qtd."
         dgItens.Columns(5).HeaderText = "Local Armazenado"
         dgItens.Columns(6).HeaderText = "Descrição"
@@ -81,6 +83,7 @@ Public Class btnCarregarfoto
         txtIdItem.Text = dgItens.CurrentRow.Cells(0).Value
         btnAlterarItem.Enabled = True
         btnExcluirItem.Enabled = True
+        btnVisualizar.Enabled = True
     End Sub
 
     Private Sub btnAlterarItem_Click(sender As Object, e As EventArgs) Handles btnAlterarItem.Click
@@ -88,6 +91,7 @@ Public Class btnCarregarfoto
         CadastroItem.Show()
         'HABILITAR OS CAMPOS PARA PODER ALTERAR
         habilitarCampos()
+        CadastroItem.txtIdItem.Text = dgItens.CurrentRow.Cells(0).Value
         CadastroItem.cmbTipo.Text = dgItens.CurrentRow.Cells(1).Value
         CadastroItem.txtTitulo.Text = dgItens.CurrentRow.Cells(2).Value
         CadastroItem.txtValorApx.Text = dgItens.CurrentRow.Cells(3).Value
@@ -111,7 +115,7 @@ Public Class btnCarregarfoto
         CadastroItem.txtTotal.Enabled = True
         CadastroItem.rbOriginal.Enabled = True
         CadastroItem.btnSalvar.Enabled = False
-        CadastroItem.btnSalvarFoto.Enabled = True
+
         CadastroItem.btnCarregarFoto.Enabled = True
         CadastroItem.btnCarregarFoto.Enabled = True
         CadastroItem.btnNovo.Enabled = False
@@ -126,5 +130,125 @@ Public Class btnCarregarfoto
     Private Sub desabilitarCampos()
         btnAlterarItem.Enabled = False
         btnExcluirItem.Enabled = False
+        btnVisualizar.Enabled = False
+
+    End Sub
+
+    Private Sub btnVizualizar_Click(sender As Object, e As EventArgs) Handles btnVisualizar.Click
+        'ABRIR O FORM DE visualizar
+        VisualizarItem.Show()
+
+        'JOGAR OQUE TA NA GRID NOS LABELS
+
+        VisualizarItem.lblTipo.Text = dgItens.CurrentRow.Cells(1).Value
+        VisualizarItem.lblTitulo.Text = dgItens.CurrentRow.Cells(2).Value
+        VisualizarItem.lblValor.Text = dgItens.CurrentRow.Cells(3).Value
+
+        VisualizarItem.lblLocal.Text = dgItens.CurrentRow.Cells(5).Value
+        VisualizarItem.lblDesc.Text = dgItens.CurrentRow.Cells(6).Value
+        'VisualizarItem.picImagem.Image = Image.FromFile("image.jpg"((dgItens.CurrentRow.Cells(7).Value)))
+
+
+        VisualizarItem.lblData.Text = dgItens.CurrentRow.Cells(9).Value
+    End Sub
+
+    'METODO TOTALIZAR
+    Private Sub totalizar()
+        Dim total As Decimal
+        For Each lin As DataGridViewRow In dgItens.Rows
+            total = total + lin.Cells(3).Value
+        Next
+
+        lblValorTotal.Text = total
+    End Sub
+
+    Private Sub cmbTipoItem_TextChanged(sender As Object, e As EventArgs) Handles cmbTipoItem.TextChanged
+        If cmbTipoItem.Text = "" Then
+
+
+        Else
+
+            Dim dt As New DataTable
+            Dim da As SqlDataAdapter
+
+            Try
+                abrir()
+                da = New SqlDataAdapter("sp_BuscarItemTipoo", con)
+                da.SelectCommand.CommandType = CommandType.StoredProcedure
+                da.SelectCommand.Parameters.AddWithValue("@tipoItem", cmbTipoItem.Text)
+                da.Fill(dt)
+                dgItens.DataSource = dt
+
+
+                ContarLinhas()
+                totalizar()
+
+
+            Catch ex As Exception
+                MessageBox.Show("erro ao listar" + ex.Message)
+                fechar()
+
+            End Try
+        End If
+    End Sub
+
+    Private Sub txtTitulo_TextChanged(sender As Object, e As EventArgs) Handles txtTitulo.TextChanged
+        If txtTitulo.Text = "" Then
+
+
+        Else
+
+            Dim dt As New DataTable
+            Dim da As SqlDataAdapter
+
+            Try
+                abrir()
+                da = New SqlDataAdapter("sp_BuscarItemNomee", con)
+                da.SelectCommand.CommandType = CommandType.StoredProcedure
+                da.SelectCommand.Parameters.AddWithValue("@Titulo", txtTitulo.Text)
+                da.Fill(dt)
+                dgItens.DataSource = dt
+
+
+                ContarLinhas()
+                totalizar()
+
+
+            Catch ex As Exception
+                MessageBox.Show("erro ao listar" + ex.Message)
+                fechar()
+
+            End Try
+        End If
+    End Sub
+
+    Private Sub txtLocalArm_TextChanged(sender As Object, e As EventArgs) Handles txtLocalArm.TextChanged
+        If txtLocalArm.Text = "" Then
+
+
+        Else
+
+            Dim dt As New DataTable
+            Dim da As SqlDataAdapter
+
+            Try
+                abrir()
+                da = New SqlDataAdapter("sp_BuscarItemLocall", con)
+                da.SelectCommand.CommandType = CommandType.StoredProcedure
+                da.SelectCommand.Parameters.AddWithValue("@localArmazenado", txtLocalArm.Text)
+                da.Fill(dt)
+                dgItens.DataSource = dt
+
+
+                ContarLinhas()
+                totalizar()
+
+
+            Catch ex As Exception
+                MessageBox.Show("erro ao listar" + ex.Message)
+                fechar()
+
+            End Try
+        End If
     End Sub
 End Class

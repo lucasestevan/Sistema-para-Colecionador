@@ -22,7 +22,7 @@ Partial Class btnCarregarfoto
     'Não o modifique usando o editor de códigos.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnPesquisarItem = New System.Windows.Forms.Button()
         Me.btnAlterarItem = New System.Windows.Forms.Button()
         Me.btnExcluirItem = New System.Windows.Forms.Button()
@@ -30,8 +30,6 @@ Partial Class btnCarregarfoto
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.txtLocalArm = New System.Windows.Forms.TextBox()
-        Me.txtTitulo = New System.Windows.Forms.TextBox()
         Me.lblValorTotal = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.lblQtdTotal = New System.Windows.Forms.Label()
@@ -40,6 +38,8 @@ Partial Class btnCarregarfoto
         Me.txtIdItem = New System.Windows.Forms.TextBox()
         Me.cmbTipoItem = New System.Windows.Forms.ComboBox()
         Me.btnVisualizar = New System.Windows.Forms.Button()
+        Me.txtTitulo = New System.Windows.Forms.ComboBox()
+        Me.txtLocalArm = New System.Windows.Forms.ComboBox()
         CType(Me.dgItens, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -88,21 +88,22 @@ Partial Class btnCarregarfoto
         '
         Me.dgItens.AllowUserToAddRows = False
         Me.dgItens.AllowUserToDeleteRows = False
+        Me.dgItens.BackgroundColor = System.Drawing.SystemColors.Info
         Me.dgItens.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgItens.Location = New System.Drawing.Point(12, 162)
+        Me.dgItens.Location = New System.Drawing.Point(12, 138)
         Me.dgItens.MultiSelect = False
         Me.dgItens.Name = "dgItens"
         Me.dgItens.ReadOnly = True
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.InactiveCaption
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgItens.RowHeadersDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.InactiveCaption
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgItens.RowHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgItens.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
-        Me.dgItens.Size = New System.Drawing.Size(483, 208)
+        Me.dgItens.Size = New System.Drawing.Size(483, 232)
         Me.dgItens.TabIndex = 96
         '
         'Label6
@@ -131,22 +132,6 @@ Partial Class btnCarregarfoto
         Me.Label1.Size = New System.Drawing.Size(69, 13)
         Me.Label1.TabIndex = 97
         Me.Label1.Text = "Tipo do Item:"
-        '
-        'txtLocalArm
-        '
-        Me.txtLocalArm.BackColor = System.Drawing.Color.White
-        Me.txtLocalArm.Location = New System.Drawing.Point(125, 99)
-        Me.txtLocalArm.Name = "txtLocalArm"
-        Me.txtLocalArm.Size = New System.Drawing.Size(289, 20)
-        Me.txtLocalArm.TabIndex = 102
-        '
-        'txtTitulo
-        '
-        Me.txtTitulo.BackColor = System.Drawing.Color.White
-        Me.txtTitulo.Location = New System.Drawing.Point(126, 58)
-        Me.txtTitulo.Name = "txtTitulo"
-        Me.txtTitulo.Size = New System.Drawing.Size(288, 20)
-        Me.txtTitulo.TabIndex = 100
         '
         'lblValorTotal
         '
@@ -205,7 +190,7 @@ Partial Class btnCarregarfoto
         '
         'txtIdItem
         '
-        Me.txtIdItem.BackColor = System.Drawing.Color.White
+        Me.txtIdItem.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.txtIdItem.Enabled = False
         Me.txtIdItem.Location = New System.Drawing.Point(426, 19)
         Me.txtIdItem.Name = "txtIdItem"
@@ -215,12 +200,12 @@ Partial Class btnCarregarfoto
         '
         'cmbTipoItem
         '
-        Me.cmbTipoItem.BackColor = System.Drawing.Color.White
+        Me.cmbTipoItem.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.cmbTipoItem.FormattingEnabled = True
-        Me.cmbTipoItem.Items.AddRange(New Object() {"Camisa", "Copo", "Bandeira"})
-        Me.cmbTipoItem.Location = New System.Drawing.Point(125, 18)
+        Me.cmbTipoItem.Items.AddRange(New Object() {""})
+        Me.cmbTipoItem.Location = New System.Drawing.Point(122, 18)
         Me.cmbTipoItem.Name = "cmbTipoItem"
-        Me.cmbTipoItem.Size = New System.Drawing.Size(236, 21)
+        Me.cmbTipoItem.Size = New System.Drawing.Size(161, 21)
         Me.cmbTipoItem.TabIndex = 109
         '
         'btnVisualizar
@@ -236,11 +221,31 @@ Partial Class btnCarregarfoto
         Me.btnVisualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnVisualizar.UseVisualStyleBackColor = False
         '
+        'txtTitulo
+        '
+        Me.txtTitulo.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.txtTitulo.FormattingEnabled = True
+        Me.txtTitulo.Location = New System.Drawing.Point(122, 54)
+        Me.txtTitulo.Name = "txtTitulo"
+        Me.txtTitulo.Size = New System.Drawing.Size(210, 21)
+        Me.txtTitulo.TabIndex = 111
+        '
+        'txtLocalArm
+        '
+        Me.txtLocalArm.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.txtLocalArm.FormattingEnabled = True
+        Me.txtLocalArm.Location = New System.Drawing.Point(122, 96)
+        Me.txtLocalArm.Name = "txtLocalArm"
+        Me.txtLocalArm.Size = New System.Drawing.Size(210, 21)
+        Me.txtLocalArm.TabIndex = 112
+        '
         'btnCarregarfoto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(621, 399)
+        Me.Controls.Add(Me.txtLocalArm)
+        Me.Controls.Add(Me.txtTitulo)
         Me.Controls.Add(Me.btnVisualizar)
         Me.Controls.Add(Me.cmbTipoItem)
         Me.Controls.Add(Me.Label7)
@@ -249,8 +254,6 @@ Partial Class btnCarregarfoto
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.lblValorTotal)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.txtLocalArm)
-        Me.Controls.Add(Me.txtTitulo)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
@@ -275,8 +278,6 @@ Partial Class btnCarregarfoto
     Friend WithEvents Label6 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents txtLocalArm As TextBox
-    Friend WithEvents txtTitulo As TextBox
     Friend WithEvents lblValorTotal As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents lblQtdTotal As Label
@@ -285,4 +286,6 @@ Partial Class btnCarregarfoto
     Friend WithEvents txtIdItem As TextBox
     Friend WithEvents cmbTipoItem As ComboBox
     Friend WithEvents btnVisualizar As Button
+    Friend WithEvents txtTitulo As ComboBox
+    Friend WithEvents txtLocalArm As ComboBox
 End Class

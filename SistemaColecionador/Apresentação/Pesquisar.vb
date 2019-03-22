@@ -124,7 +124,7 @@ Public Class btnCarregarfoto
 
     Private Sub Pesquisar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         desabilitarCampos()
-        Listar()
+
     End Sub
 
     Private Sub desabilitarCampos()
@@ -192,9 +192,9 @@ Public Class btnCarregarfoto
         End If
     End Sub
 
-    Private Sub txtTitulo_TextChanged(sender As Object, e As EventArgs) Handles txtTitulo.TextChanged
-        If txtTitulo.Text = "" Then
 
+    Private Sub txtTitulo_TextChanged_1(sender As Object, e As EventArgs) Handles txtTitulo.TextChanged
+        If txtTitulo.Text = "" Then
 
         Else
 
@@ -222,9 +222,8 @@ Public Class btnCarregarfoto
         End If
     End Sub
 
-    Private Sub txtLocalArm_TextChanged(sender As Object, e As EventArgs) Handles txtLocalArm.TextChanged
+    Private Sub txtLocalArm_TextChanged_1(sender As Object, e As EventArgs) Handles txtLocalArm.TextChanged
         If txtLocalArm.Text = "" Then
-
 
         Else
 
@@ -250,5 +249,87 @@ Public Class btnCarregarfoto
 
             End Try
         End If
+    End Sub
+
+
+    Private Sub CarregaTipoItem()
+
+        Dim dt As New DataTable
+        Dim da As SqlDataAdapter
+
+        Try
+            abrir()
+            da = New SqlDataAdapter("SELECT * FROM Itens", con)
+            'PREENCHER A TABELA
+            da.Fill(dt)
+            cmbTipoItem.DisplayMember = "tipoItem"
+            cmbTipoItem.ValueMember = "id_item"
+            cmbTipoItem.DataSource = dt
+            totalizar()
+            ContarLinhas()
+
+        Catch ex As Exception
+            MsgBox("Erro no metodo listar" + ex.Message, MsgBoxStyle.Critical, "Erro")
+            fechar()
+        End Try
+    End Sub
+
+    Private Sub CarregaTitulo()
+
+        Dim dt As New DataTable
+        Dim da As SqlDataAdapter
+
+        Try
+            abrir()
+            da = New SqlDataAdapter("SELECT * FROM Itens", con)
+            'PREENCHER A TABELA
+            da.Fill(dt)
+            txtTitulo.DisplayMember = "Titulo"
+            txtTitulo.ValueMember = "id_item"
+            txtTitulo.DataSource = dt
+            totalizar()
+            ContarLinhas()
+
+        Catch ex As Exception
+            MsgBox("Erro no metodo listar" + ex.Message, MsgBoxStyle.Critical, "Erro")
+            fechar()
+        End Try
+    End Sub
+
+
+    Private Sub CarregarLocalItem()
+
+        Dim dt As New DataTable
+        Dim da As SqlDataAdapter
+
+        Try
+            abrir()
+            da = New SqlDataAdapter("SELECT * FROM Itens", con)
+            'PREENCHER A TABELA
+            da.Fill(dt)
+            txtLocalArm.DisplayMember = "localArmazenado"
+            txtLocalArm.ValueMember = "id_item"
+            txtLocalArm.DataSource = dt
+            totalizar()
+            ContarLinhas()
+
+        Catch ex As Exception
+            MsgBox("Erro no metodo listar" + ex.Message, MsgBoxStyle.Critical, "Erro")
+            fechar()
+        End Try
+    End Sub
+
+    'CARREGAR OS ITENS AO CLIKAR NO COMBO BOX
+    Private Sub cmbTipoItem_MouseClick(sender As Object, e As MouseEventArgs) Handles cmbTipoItem.MouseClick
+        CarregaTipoItem()
+
+    End Sub
+
+    Private Sub txtTitulo_MouseClick(sender As Object, e As MouseEventArgs) Handles txtTitulo.MouseClick
+        CarregaTitulo()
+    End Sub
+
+    Private Sub txtLocalArm_MouseClick(sender As Object, e As MouseEventArgs) Handles txtLocalArm.MouseClick
+        CarregarLocalItem()
     End Sub
 End Class

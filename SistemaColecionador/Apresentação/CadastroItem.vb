@@ -3,17 +3,18 @@ Imports System.Data.SqlClient
 Imports System.IO
 
 Public Class CadastroItem
-    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles txtTitulo.TextChanged
-
-    End Sub
-
-    Private Sub cmbSexo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbTipo.SelectedIndexChanged
-
-    End Sub
-
 
     Private Sub CadastroItem_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         desabilitarCampos()
+
+
+    End Sub
+
+    Private Sub total()
+        Dim total As Decimal
+        total = txtQuantidade.TextAlign * txtValorApx.TextMaskFormat
+
+        txtTotal.Tag = total
     End Sub
 
     'DESABILITAR CAMPOS
@@ -47,7 +48,7 @@ Public Class CadastroItem
         txtLocalArm.Text = ""
         txtTotal.Text = ""
         rbOriginal.Checked = False
-        picImagem.Image = Nothing
+
 
     End Sub
 
@@ -58,7 +59,6 @@ Public Class CadastroItem
         txtValorApx.Enabled = True
         txtLocalArm.Enabled = True
         txtDesc.Enabled = True
-        txtTotal.Enabled = True
         txtQuantidade.Enabled = True
         rbOriginal.Enabled = True
         btnSalvar.Enabled = True
@@ -79,7 +79,6 @@ Public Class CadastroItem
             txtTitulo.Text <> "" And
             txtQuantidade.Text <> "" Then
 
-
             Try
                 abrir()
                 cmd = New SqlCommand("sp_salvarItem", con)
@@ -94,8 +93,8 @@ Public Class CadastroItem
                 cmd.Parameters.AddWithValue("@data_cadastro", dtpCadastro.Text)
                 Using ms As New IO.MemoryStream
                     ImageAUsar.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg)
-                    Dim byteArray = ms.ToArray
-                    cmd.Parameters.AddWithValue("@imagem", byteArray)
+                    Dim picImagem = ms.ToArray
+                    cmd.Parameters.AddWithValue("@imagem", picImagem)
 
                     cmd.Parameters.Add("@mensagem", SqlDbType.VarChar, 100).Direction = 2
 
@@ -117,10 +116,6 @@ Public Class CadastroItem
         End If
     End Sub
 
-    Private Sub txtTotal_TextChanged(sender As Object, e As EventArgs) Handles txtTotal.TextChanged
-
-
-    End Sub
 
     'BOTAO ALTERAR item
     Private Sub btnAlterarItem_Click(sender As Object, e As EventArgs) Handles btnAlterarItem.Click
@@ -140,8 +135,8 @@ Public Class CadastroItem
             cmd.Parameters.AddWithValue("@original", rbOriginal.Text)
             Using ms As New IO.MemoryStream
                 ImageAUsar.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg)
-                Dim byteArray = ms.ToArray
-                cmd.Parameters.AddWithValue("@imagem", byteArray)
+                Dim picImagem = ms.ToArray
+                cmd.Parameters.AddWithValue("@imagem", picImagem)
 
                 cmd.Parameters.Add("@mensagem", SqlDbType.VarChar, 100).Direction = 2
 
@@ -184,7 +179,33 @@ Public Class CadastroItem
         CarregarImagem()
     End Sub
 
-    Private Sub btnSalvarFoto_Click_1(sender As Object, e As EventArgs)
-
+    Private Sub cmbTipo_MouseClick(sender As Object, e As MouseEventArgs) Handles cmbTipo.MouseClick
+        CarregaTipoItem()
     End Sub
+
+    Private Sub CarregaTipoItem()
+
+        Dim dt As New DataTable
+        Dim da As SqlDataAdapter
+
+        Try
+            abrir()
+            da = New SqlDataAdapter("SELECT * FROM Itens", con)
+            'PREENCHER A TABELA
+            da.Fill(dt)
+            cmbTipo.DisplayMember = "tipoItem"
+            cmbTipo.ValueMember = "id_item"
+            cmbTipo.DataSource = dt
+
+
+        Catch ex As Exception
+            MsgBox("Erro no metodo listar" + ex.Message, MsgBoxStyle.Critical, "Erro")
+            fechar()
+        End Try
+    End Sub
+
+    Private Sub txtValorApx_TextChanged(sender As Object, e As EventArgs) Handles txtValorApx.TextChanged
+        total()
+    End Sub
+
 End Class

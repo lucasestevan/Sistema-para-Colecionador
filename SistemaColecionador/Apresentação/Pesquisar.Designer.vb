@@ -23,6 +23,7 @@ Partial Class btnCarregarfoto
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(btnCarregarfoto))
         Me.btnPesquisarItem = New System.Windows.Forms.Button()
         Me.btnAlterarItem = New System.Windows.Forms.Button()
         Me.btnExcluirItem = New System.Windows.Forms.Button()
@@ -262,6 +263,7 @@ Partial Class btnCarregarfoto
         Me.Controls.Add(Me.btnAlterarItem)
         Me.Controls.Add(Me.btnExcluirItem)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "btnCarregarfoto"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

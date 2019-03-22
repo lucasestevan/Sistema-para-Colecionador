@@ -64,6 +64,7 @@ Partial Class Menu
         Me.Controls.Add(Me.btnPesquisar)
         Me.Controls.Add(Me.btnCadastro)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "Menu"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

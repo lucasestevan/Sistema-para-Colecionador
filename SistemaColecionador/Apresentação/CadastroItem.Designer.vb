@@ -276,7 +276,7 @@ Partial Class CadastroItem
         '
         Me.txtValorApx.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.txtValorApx.Location = New System.Drawing.Point(122, 133)
-        Me.txtValorApx.Mask = "000.00"
+        Me.txtValorApx.Mask = "000,00"
         Me.txtValorApx.Name = "txtValorApx"
         Me.txtValorApx.Size = New System.Drawing.Size(43, 20)
         Me.txtValorApx.TabIndex = 3

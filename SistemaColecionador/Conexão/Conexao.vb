@@ -2,7 +2,7 @@
 
 Module Conexao
     'CRIAR CONEXAO COM BD SERVER
-    Public con As New SqlConnection("Server=DESKTOP-LVOTD2H\SQLEXPRESS; DataBase=SistemaColecionador; Integrated Security = SSPI")
+    Public con As New SqlConnection("Data Source = DESKTOP-LVOTD2H\SQLEXPRESS; INITIAL CATALOG = SistemaColecionador; Integrated Security = SSPI")
 
     'METODO ABRIR CONEXAO
     Sub abrir()

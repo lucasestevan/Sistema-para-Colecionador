@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports System.IO
 
 Public Class btnCarregarfoto
 
@@ -41,10 +42,13 @@ Public Class btnCarregarfoto
         dgItens.Columns(4).HeaderText = "Qtd."
         dgItens.Columns(5).HeaderText = "Local Armazenado"
         dgItens.Columns(6).HeaderText = "Descrição"
-        dgItens.Columns(7).Visible = False
+        dgItens.Columns(7).HeaderText = "Foto"
         dgItens.Columns(8).HeaderText = "Original"
         dgItens.Columns(9).HeaderText = "Data de Cadastro"
         dgItens.Columns(10).Visible = False
+        dgItens.Columns(11).HeaderText = "Valor total"
+        dgItens.Columns(11).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+
     End Sub
 
     'BOTAO EXCLUIR ITEM
@@ -57,20 +61,15 @@ Public Class btnCarregarfoto
                 abrir()
                 cmd = New SqlCommand("sp_excluirItemm", con)
                 cmd.CommandType = CommandType.StoredProcedure
-
                 cmd.Parameters.AddWithValue("@id_item", txtIdItem.Text)
-
                 cmd.Parameters.Add("@mensagem", SqlDbType.VarChar, 100).Direction = 2
                 cmd.ExecuteNonQuery()
-
                 Dim msg As String = cmd.Parameters("@mensagem").Value.ToString
                 MessageBox.Show(msg, "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3)
 
                 Listar()
-
                 btnAlterarItem.Enabled = False
                 btnExcluirItem.Enabled = False
-
             Catch ex As Exception
                 MessageBox.Show("Erro ao Excluir os dados " + ex.Message)
                 fechar()
@@ -98,8 +97,6 @@ Public Class btnCarregarfoto
         CadastroItem.txtQuantidade.Text = dgItens.CurrentRow.Cells(4).Value
         CadastroItem.txtLocalArm.Text = dgItens.CurrentRow.Cells(5).Value
         CadastroItem.txtDesc.Text = dgItens.CurrentRow.Cells(6).Value
-
-        CadastroItem.rbOriginal.Text = dgItens.CurrentRow.Cells(8).Value
         CadastroItem.dtpCadastro.Text = dgItens.CurrentRow.Cells(9).Value
 
     End Sub
@@ -109,13 +106,11 @@ Public Class btnCarregarfoto
         CadastroItem.cmbTipo.Enabled = True
         CadastroItem.txtTitulo.Enabled = True
         CadastroItem.txtValorApx.Enabled = True
-        CadastroItem.dtpCadastro.Enabled = True
         CadastroItem.txtLocalArm.Enabled = True
         CadastroItem.txtDesc.Enabled = True
-        CadastroItem.txtTotal.Enabled = True
+        CadastroItem.txtQuantidade.Enabled = True
         CadastroItem.rbOriginal.Enabled = True
         CadastroItem.btnSalvar.Enabled = False
-
         CadastroItem.btnCarregarFoto.Enabled = True
         CadastroItem.btnCarregarFoto.Enabled = True
         CadastroItem.btnNovo.Enabled = False
@@ -138,25 +133,42 @@ Public Class btnCarregarfoto
         'ABRIR O FORM DE visualizar
         VisualizarItem.Show()
 
-        'JOGAR OQUE TA NA GRID NOS LABELS
+        '' PUXAR A IMAGEM DO BANCO DE DADOS
+        abrir()
+        Using cmd As New SqlCommand("select imagem from Itens where id_item=@id_item", con)
+            cmd.Parameters.AddWithValue("@id_item", txtIdItem.Text)
+            Dim tempImagem As Byte() = DirectCast(cmd.ExecuteScalar(), Byte())
+            If tempImagem Is Nothing Then
+                MessageBox.Show("Imagem não localizada", "Erro")
+                Exit Sub
+            Else
+                Dim strArquivo As String = Convert.ToString(DateTime.Now.ToFileTime())
+                Dim fs As New FileStream(strArquivo, FileMode.CreateNew, FileAccess.Write)
+                fs.Write(tempImagem, 0, tempImagem.Length)
+                fs.Flush()
+                fs.Close()
+                VisualizarItem.picImagem.Image = Image.FromFile(strArquivo)
+            End If
 
-        VisualizarItem.lblTipo.Text = dgItens.CurrentRow.Cells(1).Value
-        VisualizarItem.lblTitulo.Text = dgItens.CurrentRow.Cells(2).Value
-        VisualizarItem.lblValor.Text = dgItens.CurrentRow.Cells(3).Value
+            'JOGAR OQUE TA NA GRID NOS LABELS
+            VisualizarItem.lblTipo.Text = dgItens.CurrentRow.Cells(1).Value
+            VisualizarItem.lblTitulo.Text = dgItens.CurrentRow.Cells(2).Value
+            VisualizarItem.lblQuantidade.Text = dgItens.CurrentRow.Cells(4).Value
+            VisualizarItem.lblValor.Text = dgItens.CurrentRow.Cells(11).Value
+            VisualizarItem.lblLocal.Text = dgItens.CurrentRow.Cells(5).Value
+            VisualizarItem.lblDesc.Text = dgItens.CurrentRow.Cells(6).Value
+            VisualizarItem.lblData.Text = dgItens.CurrentRow.Cells(9).Value
+        End Using
 
-        VisualizarItem.lblLocal.Text = dgItens.CurrentRow.Cells(5).Value
-        VisualizarItem.lblDesc.Text = dgItens.CurrentRow.Cells(6).Value
-        'VisualizarItem.picImagem.Image = Image.FromFile("image.jpg"((dgItens.CurrentRow.Cells(7).Value)))
 
 
-        VisualizarItem.lblData.Text = dgItens.CurrentRow.Cells(9).Value
     End Sub
 
     'METODO TOTALIZAR
     Private Sub totalizar()
         Dim total As Decimal
         For Each lin As DataGridViewRow In dgItens.Rows
-            total = total + lin.Cells(3).Value
+            total = total + lin.Cells(11).Value
         Next
 
         lblValorTotal.Text = total
@@ -165,9 +177,7 @@ Public Class btnCarregarfoto
     Private Sub cmbTipoItem_TextChanged(sender As Object, e As EventArgs) Handles cmbTipoItem.TextChanged
         If cmbTipoItem.Text = "" Then
 
-
         Else
-
             Dim dt As New DataTable
             Dim da As SqlDataAdapter
 
@@ -178,11 +188,8 @@ Public Class btnCarregarfoto
                 da.SelectCommand.Parameters.AddWithValue("@tipoItem", cmbTipoItem.Text)
                 da.Fill(dt)
                 dgItens.DataSource = dt
-
-
                 ContarLinhas()
                 totalizar()
-
 
             Catch ex As Exception
                 MessageBox.Show("erro ao listar" + ex.Message)
@@ -192,7 +199,7 @@ Public Class btnCarregarfoto
         End If
     End Sub
 
-
+    'PESQUISAR PELO TITULO
     Private Sub txtTitulo_TextChanged_1(sender As Object, e As EventArgs) Handles txtTitulo.TextChanged
         If txtTitulo.Text = "" Then
 
@@ -222,6 +229,7 @@ Public Class btnCarregarfoto
         End If
     End Sub
 
+    'PESQUISAR PELO LOCAL
     Private Sub txtLocalArm_TextChanged_1(sender As Object, e As EventArgs) Handles txtLocalArm.TextChanged
         If txtLocalArm.Text = "" Then
 
@@ -238,10 +246,8 @@ Public Class btnCarregarfoto
                 da.Fill(dt)
                 dgItens.DataSource = dt
 
-
                 ContarLinhas()
                 totalizar()
-
 
             Catch ex As Exception
                 MessageBox.Show("erro ao listar" + ex.Message)
@@ -250,7 +256,6 @@ Public Class btnCarregarfoto
             End Try
         End If
     End Sub
-
 
     Private Sub CarregaTipoItem()
 

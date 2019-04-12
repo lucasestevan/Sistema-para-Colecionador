@@ -37,6 +37,8 @@ Partial Class VisualizarItem
         Me.lblLocal = New System.Windows.Forms.Label()
         Me.lblDesc = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.lblQuantidade = New System.Windows.Forms.Label()
         CType(Me.picImagem, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -56,61 +58,67 @@ Partial Class VisualizarItem
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(63, 16)
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(70, 16)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(36, 13)
+        Me.Label2.Size = New System.Drawing.Size(43, 13)
         Me.Label2.TabIndex = 104
         Me.Label2.Text = "Titulo:"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(35, 68)
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(44, 87)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(64, 13)
+        Me.Label3.Size = New System.Drawing.Size(69, 13)
         Me.Label3.TabIndex = 105
-        Me.Label3.Text = "Valor Aprox:"
+        Me.Label3.Text = "Valor total:"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(30, 42)
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(31, 42)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(69, 13)
+        Me.Label1.Size = New System.Drawing.Size(82, 13)
         Me.Label1.TabIndex = 106
         Me.Label1.Text = "Tipo do Item:"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(6, 93)
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(3, 111)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(93, 13)
+        Me.Label4.Size = New System.Drawing.Size(110, 13)
         Me.Label4.TabIndex = 107
         Me.Label4.Text = "Data do Cadastro:"
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(2, 120)
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(1, 138)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(97, 13)
+        Me.Label6.Size = New System.Drawing.Size(114, 13)
         Me.Label6.TabIndex = 108
         Me.Label6.Text = "Local armazenado:"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(41, 148)
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(45, 164)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(58, 13)
+        Me.Label5.Size = New System.Drawing.Size(68, 13)
         Me.Label5.TabIndex = 109
         Me.Label5.Text = "Descrição:"
         '
         'lblTitulo
         '
         Me.lblTitulo.AutoSize = True
-        Me.lblTitulo.Location = New System.Drawing.Point(105, 16)
+        Me.lblTitulo.Location = New System.Drawing.Point(114, 17)
         Me.lblTitulo.Name = "lblTitulo"
         Me.lblTitulo.Size = New System.Drawing.Size(10, 13)
         Me.lblTitulo.TabIndex = 110
@@ -119,7 +127,7 @@ Partial Class VisualizarItem
         'lblTipo
         '
         Me.lblTipo.AutoSize = True
-        Me.lblTipo.Location = New System.Drawing.Point(105, 42)
+        Me.lblTipo.Location = New System.Drawing.Point(114, 43)
         Me.lblTipo.Name = "lblTipo"
         Me.lblTipo.Size = New System.Drawing.Size(10, 13)
         Me.lblTipo.TabIndex = 111
@@ -128,7 +136,7 @@ Partial Class VisualizarItem
         'lblValor
         '
         Me.lblValor.AutoSize = True
-        Me.lblValor.Location = New System.Drawing.Point(105, 68)
+        Me.lblValor.Location = New System.Drawing.Point(114, 87)
         Me.lblValor.Name = "lblValor"
         Me.lblValor.Size = New System.Drawing.Size(10, 13)
         Me.lblValor.TabIndex = 112
@@ -137,7 +145,7 @@ Partial Class VisualizarItem
         'lblData
         '
         Me.lblData.AutoSize = True
-        Me.lblData.Location = New System.Drawing.Point(105, 93)
+        Me.lblData.Location = New System.Drawing.Point(114, 112)
         Me.lblData.Name = "lblData"
         Me.lblData.Size = New System.Drawing.Size(10, 13)
         Me.lblData.TabIndex = 113
@@ -146,7 +154,7 @@ Partial Class VisualizarItem
         'lblLocal
         '
         Me.lblLocal.AutoSize = True
-        Me.lblLocal.Location = New System.Drawing.Point(105, 120)
+        Me.lblLocal.Location = New System.Drawing.Point(114, 139)
         Me.lblLocal.Name = "lblLocal"
         Me.lblLocal.Size = New System.Drawing.Size(10, 13)
         Me.lblLocal.TabIndex = 114
@@ -156,7 +164,7 @@ Partial Class VisualizarItem
         '
         Me.lblDesc.AutoEllipsis = True
         Me.lblDesc.AutoSize = True
-        Me.lblDesc.Location = New System.Drawing.Point(105, 148)
+        Me.lblDesc.Location = New System.Drawing.Point(114, 165)
         Me.lblDesc.Name = "lblDesc"
         Me.lblDesc.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.lblDesc.Size = New System.Drawing.Size(10, 13)
@@ -167,6 +175,8 @@ Partial Class VisualizarItem
         '
         Me.GroupBox1.AutoSize = True
         Me.GroupBox1.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.GroupBox1.Controls.Add(Me.lblQuantidade)
+        Me.GroupBox1.Controls.Add(Me.Label7)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.lblDesc)
         Me.GroupBox1.Controls.Add(Me.Label3)
@@ -179,11 +189,30 @@ Partial Class VisualizarItem
         Me.GroupBox1.Controls.Add(Me.lblTipo)
         Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.Controls.Add(Me.lblTitulo)
-        Me.GroupBox1.Location = New System.Drawing.Point(24, 250)
+        Me.GroupBox1.Location = New System.Drawing.Point(14, 238)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(266, 231)
+        Me.GroupBox1.Size = New System.Drawing.Size(289, 243)
         Me.GroupBox1.TabIndex = 116
         Me.GroupBox1.TabStop = False
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(78, 65)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(35, 13)
+        Me.Label7.TabIndex = 116
+        Me.Label7.Text = "Qtd.:"
+        '
+        'lblQuantidade
+        '
+        Me.lblQuantidade.AutoSize = True
+        Me.lblQuantidade.Location = New System.Drawing.Point(114, 66)
+        Me.lblQuantidade.Name = "lblQuantidade"
+        Me.lblQuantidade.Size = New System.Drawing.Size(10, 13)
+        Me.lblQuantidade.TabIndex = 117
+        Me.lblQuantidade.Text = "-"
         '
         'VisualizarItem
         '
@@ -220,4 +249,6 @@ Partial Class VisualizarItem
     Friend WithEvents lblLocal As Label
     Friend WithEvents lblDesc As Label
     Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents lblQuantidade As Label
+    Friend WithEvents Label7 As Label
 End Class

@@ -2,6 +2,7 @@
 Imports System.Data.SqlClient
 Imports System.IO
 
+
 Public Class CadastroItem
 
     Private Sub CadastroItem_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -10,12 +11,6 @@ Public Class CadastroItem
 
     End Sub
 
-    Private Sub total()
-        Dim total As Decimal
-        total = txtQuantidade.TextAlign * txtValorApx.TextMaskFormat
-
-        txtTotal.Tag = total
-    End Sub
 
     'DESABILITAR CAMPOS
     Private Sub desabilitarCampos()
@@ -47,8 +42,9 @@ Public Class CadastroItem
         txtValorApx.Text = ""
         txtLocalArm.Text = ""
         txtTotal.Text = ""
+        txtDesc.Text = ""
+        txtQuantidade.Text = ""
         rbOriginal.Checked = False
-
 
     End Sub
 
@@ -86,6 +82,7 @@ Public Class CadastroItem
                 cmd.Parameters.AddWithValue("@tipoItem", cmbTipo.Text)
                 cmd.Parameters.AddWithValue("@Titulo", txtTitulo.Text)
                 cmd.Parameters.AddWithValue("@valor", txtValorApx.Text)
+                cmd.Parameters.AddWithValue("@valorTotal", txtTotal.Text)
                 cmd.Parameters.AddWithValue("@quantidade", txtQuantidade.Text)
                 cmd.Parameters.AddWithValue("@localArmazenado", txtLocalArm.Text)
                 cmd.Parameters.AddWithValue("@descricao", txtDesc.Text)
@@ -123,12 +120,13 @@ Public Class CadastroItem
 
         Try
             abrir()
-            cmd = New SqlCommand("sp_editarItemm", con)
+            cmd = New SqlCommand("sp_editarItem", con)
             cmd.CommandType = CommandType.StoredProcedure
             cmd.Parameters.AddWithValue("@id_item", txtIdItem.Text)
             cmd.Parameters.AddWithValue("@tipoItem", cmbTipo.Text)
             cmd.Parameters.AddWithValue("@Titulo", txtTitulo.Text)
             cmd.Parameters.AddWithValue("@valor", txtValorApx.Text)
+            cmd.Parameters.AddWithValue("@valorTotal", txtTotal.Text)
             cmd.Parameters.AddWithValue("@quantidade", txtQuantidade.Text)
             cmd.Parameters.AddWithValue("@localArmazenado", txtLocalArm.Text)
             cmd.Parameters.AddWithValue("@descricao", txtDesc.Text)
@@ -153,7 +151,9 @@ Public Class CadastroItem
         End Try
     End Sub
 
-    Private Sub txtQuantidade_ValueChanged(sender As Object, e As EventArgs) Handles txtQuantidade.ValueChanged
+    Private Sub txtQuantidade_ValueChanged(sender As Object, e As EventArgs)
+
+
 
     End Sub
 
@@ -204,8 +204,19 @@ Public Class CadastroItem
         End Try
     End Sub
 
-    Private Sub txtValorApx_TextChanged(sender As Object, e As EventArgs) Handles txtValorApx.TextChanged
-        total()
+
+    Private Sub txtQuantidade_TextChanged(sender As Object, e As EventArgs) Handles txtQuantidade.TextChanged
+
+        If txtQuantidade.Text = "" Then
+
+        Else
+            Dim numero1, numero2, soma As Integer
+            numero1 = txtValorApx.Text
+            numero2 = txtQuantidade.Text
+            soma = numero1 * numero2
+            txtTotal.Text = soma
+        End If
+
     End Sub
 
 End Class

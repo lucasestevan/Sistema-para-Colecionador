@@ -44,11 +44,10 @@ Partial Class CadastroItem
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.btnAlterarItem = New System.Windows.Forms.Button()
-        Me.txtQuantidade = New System.Windows.Forms.NumericUpDown()
-        Me.txtValorApx = New System.Windows.Forms.MaskedTextBox()
         Me.txtTotal = New System.Windows.Forms.TextBox()
+        Me.txtQuantidade = New System.Windows.Forms.TextBox()
+        Me.txtValorApx = New System.Windows.Forms.TextBox()
         CType(Me.picImagem, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtQuantidade, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -72,7 +71,7 @@ Partial Class CadastroItem
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(52, 136)
+        Me.Label3.Location = New System.Drawing.Point(52, 106)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(64, 13)
         Me.Label3.TabIndex = 3
@@ -103,7 +102,7 @@ Partial Class CadastroItem
         Me.txtTitulo.Location = New System.Drawing.Point(123, 70)
         Me.txtTitulo.Name = "txtTitulo"
         Me.txtTitulo.Size = New System.Drawing.Size(288, 20)
-        Me.txtTitulo.TabIndex = 2
+        Me.txtTitulo.TabIndex = 3
         '
         'cmbTipo
         '
@@ -112,7 +111,7 @@ Partial Class CadastroItem
         Me.cmbTipo.Location = New System.Drawing.Point(123, 34)
         Me.cmbTipo.Name = "cmbTipo"
         Me.cmbTipo.Size = New System.Drawing.Size(151, 21)
-        Me.cmbTipo.TabIndex = 1
+        Me.cmbTipo.TabIndex = 2
         '
         'dtpCadastro
         '
@@ -150,7 +149,7 @@ Partial Class CadastroItem
         Me.rbOriginal.Location = New System.Drawing.Point(123, 316)
         Me.rbOriginal.Name = "rbOriginal"
         Me.rbOriginal.Size = New System.Drawing.Size(74, 17)
-        Me.rbOriginal.TabIndex = 8
+        Me.rbOriginal.TabIndex = 33
         Me.rbOriginal.TabStop = True
         Me.rbOriginal.Text = "É original?"
         Me.rbOriginal.UseVisualStyleBackColor = True
@@ -181,7 +180,7 @@ Partial Class CadastroItem
         Me.btnSalvar.Location = New System.Drawing.Point(230, 372)
         Me.btnSalvar.Name = "btnSalvar"
         Me.btnSalvar.Size = New System.Drawing.Size(97, 30)
-        Me.btnSalvar.TabIndex = 10
+        Me.btnSalvar.TabIndex = 9
         Me.btnSalvar.Text = "Salvar"
         Me.btnSalvar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnSalvar.UseVisualStyleBackColor = False
@@ -195,7 +194,7 @@ Partial Class CadastroItem
         Me.btnNovo.Location = New System.Drawing.Point(83, 372)
         Me.btnNovo.Name = "btnNovo"
         Me.btnNovo.Size = New System.Drawing.Size(97, 30)
-        Me.btnNovo.TabIndex = 42
+        Me.btnNovo.TabIndex = 1
         Me.btnNovo.Text = "Novo"
         Me.btnNovo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnNovo.UseVisualStyleBackColor = False
@@ -237,7 +236,7 @@ Partial Class CadastroItem
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(51, 109)
+        Me.Label8.Location = New System.Drawing.Point(52, 135)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(65, 13)
         Me.Label8.TabIndex = 47
@@ -246,7 +245,7 @@ Partial Class CadastroItem
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(194, 136)
+        Me.Label9.Location = New System.Drawing.Point(194, 138)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(34, 13)
         Me.Label9.TabIndex = 50
@@ -265,30 +264,33 @@ Partial Class CadastroItem
         Me.btnAlterarItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnAlterarItem.UseVisualStyleBackColor = False
         '
+        'txtTotal
+        '
+        Me.txtTotal.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.txtTotal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.txtTotal.Enabled = False
+        Me.txtTotal.Location = New System.Drawing.Point(230, 131)
+        Me.txtTotal.Name = "txtTotal"
+        Me.txtTotal.Size = New System.Drawing.Size(49, 20)
+        Me.txtTotal.TabIndex = 99
+        '
         'txtQuantidade
         '
-        Me.txtQuantidade.Location = New System.Drawing.Point(123, 102)
+        Me.txtQuantidade.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.txtQuantidade.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.txtQuantidade.Location = New System.Drawing.Point(123, 131)
         Me.txtQuantidade.Name = "txtQuantidade"
-        Me.txtQuantidade.Size = New System.Drawing.Size(47, 20)
-        Me.txtQuantidade.TabIndex = 4
+        Me.txtQuantidade.Size = New System.Drawing.Size(27, 20)
+        Me.txtQuantidade.TabIndex = 5
         '
         'txtValorApx
         '
         Me.txtValorApx.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.txtValorApx.Location = New System.Drawing.Point(122, 133)
-        Me.txtValorApx.Mask = "000,00"
+        Me.txtValorApx.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.txtValorApx.Location = New System.Drawing.Point(123, 99)
         Me.txtValorApx.Name = "txtValorApx"
-        Me.txtValorApx.Size = New System.Drawing.Size(43, 20)
-        Me.txtValorApx.TabIndex = 3
-        '
-        'txtTotal
-        '
-        Me.txtTotal.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.txtTotal.Enabled = False
-        Me.txtTotal.Location = New System.Drawing.Point(230, 134)
-        Me.txtTotal.Name = "txtTotal"
-        Me.txtTotal.Size = New System.Drawing.Size(44, 20)
-        Me.txtTotal.TabIndex = 97
+        Me.txtValorApx.Size = New System.Drawing.Size(49, 20)
+        Me.txtValorApx.TabIndex = 4
         '
         'CadastroItem
         '
@@ -296,9 +298,9 @@ Partial Class CadastroItem
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(739, 426)
-        Me.Controls.Add(Me.txtTotal)
         Me.Controls.Add(Me.txtValorApx)
         Me.Controls.Add(Me.txtQuantidade)
+        Me.Controls.Add(Me.txtTotal)
         Me.Controls.Add(Me.btnAlterarItem)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Label8)
@@ -326,7 +328,6 @@ Partial Class CadastroItem
         Me.Name = "CadastroItem"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         CType(Me.picImagem, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtQuantidade, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -353,7 +354,7 @@ Partial Class CadastroItem
     Friend WithEvents Label8 As Label
     Friend WithEvents Label9 As Label
     Friend WithEvents btnAlterarItem As Button
-    Friend WithEvents txtQuantidade As NumericUpDown
-    Friend WithEvents txtValorApx As MaskedTextBox
     Friend WithEvents txtTotal As TextBox
+    Friend WithEvents txtQuantidade As TextBox
+    Friend WithEvents txtValorApx As TextBox
 End Class
